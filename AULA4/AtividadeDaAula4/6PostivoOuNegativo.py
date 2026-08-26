@@ -1,0 +1,8 @@
+#6. Positivo ou Negativo
+
+valor = float(input("Digite um valor: "))
+
+if valor >= 0:
+    print("Positivo")
+else:
+    print("Negativo")
