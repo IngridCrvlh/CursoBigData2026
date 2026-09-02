@@ -1,14 +1,23 @@
+import random
+
+numeros_pedidos = []
 pedidos = []
 
 
-def criar_pedido(numero_pedido, numero_mesa, id_garcom):
-    # Verifica se já existe um pedido com esse número
-    for pedido in pedidos:
-        if pedido["numero_pedido"] == numero_pedido:
-            print("Erro: esse número de pedido já existe.")
-            return None
+def gerar_numero_pedido():
+    numero_pedido = random.randint(1000, 9999)
 
-    # Cria o novo pedido
+    while numero_pedido in numeros_pedidos:
+        numero_pedido = random.randint(1000, 9999)
+
+    numeros_pedidos.append(numero_pedido)
+
+    return numero_pedido
+
+
+def criar_pedido(numero_mesa, id_garcom):
+    numero_pedido = gerar_numero_pedido()
+
     novo_pedido = {
         "numero_pedido": numero_pedido,
         "numero_mesa": numero_mesa,
@@ -17,9 +26,8 @@ def criar_pedido(numero_pedido, numero_mesa, id_garcom):
         "status": "Aberto"
     }
 
-    # Adiciona o pedido à lista
     pedidos.append(novo_pedido)
 
-    print("Pedido criado com sucesso!")
+    print("Pedido criado com sucesso!✅")
 
     return novo_pedido
